@@ -23,7 +23,7 @@ func _ready():
 	_cb_shareable_url = JavaScriptBridge.create_callback(Callable(self, "on_shareable_url"))
 
 
-func gameplayStart():
+func gameplay_start():
 	if not OS.has_feature("poki"):
 		print("simulating gameplayStart()")
 		return
@@ -35,7 +35,7 @@ func gameplayStart():
 	sdk_handle.gameplayStart()
 
 
-func gameplayStop():
+func gameplay_stop():
 	if not OS.has_feature("poki"):
 		print("simulating gameplayStop()")
 		return
@@ -47,7 +47,7 @@ func gameplayStop():
 	sdk_handle.gameplayStop()
 
 
-func commercialBreak():
+func commercial_break():
 	if not OS.has_feature("poki"):
 		print("simulating commercialBreak()")
 		on_commercial_break({})
@@ -68,7 +68,7 @@ func on_commercial_break(args):
 	commercial_break_ended.emit(args)
 
 
-func rewardedBreak():
+func rewarded_break():
 	if not OS.has_feature("poki"):
 		print("simulating rewardedBreak()")
 		on_reward_break([true])
@@ -88,7 +88,7 @@ func on_reward_break(args: Array):
 	rewarded_break_ended.emit(args[0])
 
 
-func shareableURL(obj: Dictionary):
+func shareable_url(obj: Dictionary):
 	if not sdk_handle:
 		push_warning("PokiSDK is not initialized, no shareable URL")
 		return
@@ -105,7 +105,7 @@ func on_shareable_url(url):
 	shareable_url_ready.emit(url)
 
 
-func isAdBlocked():
+func is_ad_blocked():
 	if not sdk_handle:
 		push_warning("PokiSDK is not initialized, no add blocking check")
 		return
